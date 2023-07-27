@@ -7,7 +7,20 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
+
+//connect to data base 
+
+// Set up mongoose connection
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+const mongoDB = "mongodb+srv://swbrookshire:database@cluster0.puy4tmk.mongodb.net/local_library?retryWrites=true&w=majority";
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,6 +51,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//mongodb+srv://swbrookshire:database@cluster0.puy4tmk.mongodb.net/local_library?retryWrites=true&w=majority
+
 
 module.exports = app;
