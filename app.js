@@ -38,4 +38,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//mongodb+srv://swbrookshire:database@cluster0.puy4tmk.mongodb.net/local_library?retryWrites=true&w=majority
+
 module.exports = app;
